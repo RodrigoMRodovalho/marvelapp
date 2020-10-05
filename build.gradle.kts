@@ -1,4 +1,5 @@
 buildscript {
+
     repositories {
         google()
         jcenter()
@@ -18,11 +19,6 @@ allprojects {
         google()
         jcenter()
         maven (url = "https://jitpack.io")
-        maven (url = "http://releases.payworks.io/artifactory/mpos")
-        maven (url = "http://releases.payworks.io/artifactory/mpos-staging")
-        maven (url = "https://oss.sonatype.org/content/repositories/snapshots")
-        maven (url = "https://oss.sonatype.org/content/repositories/releases")
-        maven (url = "https://maven.fabric.io/public")
     }
 }
 
