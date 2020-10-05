@@ -5,8 +5,15 @@ import br.com.rrodovalho.domain.model.Character
 import br.com.rrodovalho.domain.model.CharacterDetail
 
 fun transformTo(apiResponse: ApiResponse): List<Character> {
-    //TODO map
-    return listOf(Character("1"))
+
+    val characterList = mutableListOf<Character>()
+    apiResponse.data.results.forEach {
+        characterList.add(Character("${it.id}", it.name,
+            it.description,
+            it.thumbnail.path.plus("/standard_xlarge.").plus(it.thumbnail.extension)))
+    }
+
+    return characterList
 }
 
 fun transform(apiResponse: ApiResponse): CharacterDetail {
