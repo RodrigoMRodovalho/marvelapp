@@ -62,6 +62,8 @@ dependencies {
     implementation(Libraries.kotlinCoroutinesCore)
     implementation(Libraries.kotlinCoroutinesAndroid)
     implementation(Libraries.glide)
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
 
     kapt(Libraries.lifeCycleCompiler)
 

@@ -1,12 +1,12 @@
-package br.com.rrodovalho.marvelapp.main
+package br.com.rrodovalho.marvelapp.main.features.characterdetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.rrodovalho.marvelapp.R
 
-class MainActivity : AppCompatActivity() {
+class CharacterDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_character_detail)
     }
 }

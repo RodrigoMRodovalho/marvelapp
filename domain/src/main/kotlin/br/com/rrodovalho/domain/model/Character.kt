@@ -1,4 +1,4 @@
 package br.com.rrodovalho.domain.model
 
-class Character {
+data class Character (val id: String) {
 }
