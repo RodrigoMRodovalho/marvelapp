@@ -10,7 +10,10 @@ fun transformTo(apiResponse: ApiResponse): List<Character> {
     apiResponse.data.results.forEach {
         characterList.add(Character("${it.id}", it.name,
             it.description,
-            it.thumbnail.path.plus("/standard_xlarge.").plus(it.thumbnail.extension)))
+            it.thumbnail.path.replace("http", "https")
+//                .plus("/standard_xlarge")
+                .plus(".")
+                .plus(it.thumbnail.extension)))
     }
 
     return characterList

@@ -36,8 +36,8 @@ object AndroidSdk {
 
 object Libraries {
     private object Versions {
-        const val jetPack = "1.0.2"
-        const val constraintLayout = "1.1.3"
+        const val jetPack = "1.2.0"
+        const val constraintLayout = "2.0.1"
         const val ktx = "1.0.1"
         const val googleMaterial = "1.0.0"
         const val legacySupport = "1.0.0"
@@ -49,7 +49,7 @@ object Libraries {
         const val gson = "2.8.6"
         const val retrofit = "2.6.0"
         const val okHttpInterceptor = "3.8.0"
-        const val glideVersion = "3.8.0"
+        const val glideVersion = "4.11.0"
     }
 
     const val kotlinStdLib             = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -75,6 +75,7 @@ object Libraries {
     const val retrofit                 = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGson             = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val glide                    = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler             = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 }
 
 object TestLibraries {

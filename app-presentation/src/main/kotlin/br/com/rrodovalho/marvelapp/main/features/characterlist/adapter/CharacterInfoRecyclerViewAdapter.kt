@@ -36,6 +36,10 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
             itemView.characterNametextView.text = character.name
             itemView.characterDescriptiontextView.text = character.description
             itemView.characterImageView.loadImage(character.imageUrl)
+
+            itemView.setOnClickListener {
+                listener(position, character)
+            }
         }
 
     }
@@ -44,7 +48,7 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
 fun ImageView.loadImage(imageUrl: String) {
     Glide.with(context)
         .load(imageUrl)
-        .asBitmap()
+        //.asBitmap()
         .error(R.drawable.ic_launcher_background)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(this)
