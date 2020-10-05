@@ -3,11 +3,11 @@ plugins {
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
-    id(BuildPlugins.googleServices)
     id(BuildPlugins.navigationSafeArgs)
 }
 
 android {
+    buildToolsVersion("30.0.1")
     compileSdkVersion(AndroidSdk.compile)
     defaultConfig {
         applicationId = Application.applicationId
@@ -53,8 +53,6 @@ dependencies {
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.googleMaterial)
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUi)
     implementation(Libraries.koinCore)
     implementation(Libraries.koinAndroid)
     implementation(Libraries.koinAndroidScopes)
@@ -63,8 +61,6 @@ dependencies {
     implementation(Libraries.lifeCycleExtensions)
     implementation(Libraries.kotlinCoroutinesCore)
     implementation(Libraries.kotlinCoroutinesAndroid)
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUi)
     implementation(Libraries.glide)
 
     kapt(Libraries.lifeCycleCompiler)

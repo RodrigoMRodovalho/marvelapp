@@ -1,4 +1,4 @@
-const val kotlinVersion = "1.3.70"
+const val kotlinVersion = "1.4.0"
 
 object Application {
     const val applicationId = "br.com.rrodovalho.marvelapp"
@@ -9,9 +9,8 @@ object Application {
 object BuildPlugins {
 
     private object Versions {
-        const val buildTools = "3.4.1"
+        const val buildTools = "4.0.1"
         const val googleServicesVersion = "4.3.3"
-        const val firebaseCrashlyticsVersion = "2.2.0"
         const val navigation = "2.1.0"
     }
 
@@ -46,10 +45,6 @@ object Libraries {
         const val lifecycle = "2.0.0"
         const val koin = "2.0.1"
         const val kotlinCoroutines = "1.3.7"
-        const val firebaseAnalytics = "17.4.4"
-        const val crashlytics       = "17.1.1"
-        const val room              = "2.2.3"
-        const val debugDatabase     = "1.0.6"
         const val okHttp            = "2.7.4"
         const val gson = "2.8.6"
         const val retrofit = "2.6.0"
@@ -74,9 +69,6 @@ object Libraries {
     const val koinAndroidViewModel     = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val kotlinCoroutinesCore     = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
     const val kotlinCoroutinesAndroid  = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
-    const val roomRuntime              = "androidx.room:room-runtime:${Versions.room}"
-    const val roomKtx                  = "androidx.room:room-ktx:${Versions.room}"
-    const val roomCompiler             = "androidx.room:room-compiler:${Versions.room}"
     const val gson                     = "com.google.code.gson:gson:${Versions.gson}"
     const val okHttp                   = "com.squareup.okhttp:okhttp:${Versions.okHttp}"
     const val okHttpInteceptor         = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpInterceptor}"
