@@ -1,11 +1,10 @@
-package br.com.rrodovalho.data.repository
+package br.com.rrodovalho.data.repository.local
 
 import br.com.rrodovalho.domain.model.Character
 import br.com.rrodovalho.domain.model.CharacterDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 
-class MarvelRepositoryImpl(private val localRepository: MarvelRepository,
-                           private val remoteRepository: MarvelRepository): MarvelRepository{
+class LocalRepository: MarvelRepository {
 
     override suspend fun fetchMarvelCharacterList(limit: Int, offset: Int): List<Character> {
         TODO("Not yet implemented")
@@ -14,4 +13,5 @@ class MarvelRepositoryImpl(private val localRepository: MarvelRepository,
     override suspend fun fetchMarvelCharacterDetail(characterId: String): CharacterDetail {
         TODO("Not yet implemented")
     }
+
 }
