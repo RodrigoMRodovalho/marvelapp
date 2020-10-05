@@ -8,10 +8,12 @@ class MarvelRepositoryImpl(private val localRepository: MarvelRepository,
                            private val remoteRepository: MarvelRepository): MarvelRepository{
 
     override suspend fun fetchMarvelCharacterList(limit: Int, offset: Int): List<Character> {
-        TODO("Not yet implemented")
+        //TODO implement cache
+        return remoteRepository.fetchMarvelCharacterList(limit, offset)
     }
 
     override suspend fun fetchMarvelCharacterDetail(characterId: String): CharacterDetail {
-        TODO("Not yet implemented")
+        //TODO implement cache
+        return remoteRepository.fetchMarvelCharacterDetail(characterId)
     }
 }

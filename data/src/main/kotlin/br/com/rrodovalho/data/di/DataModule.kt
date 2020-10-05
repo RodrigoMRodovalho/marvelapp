@@ -5,6 +5,7 @@ import br.com.rrodovalho.data.repository.MarvelRepositoryImpl
 import br.com.rrodovalho.data.repository.local.LocalRepository
 import br.com.rrodovalho.data.repository.remote.RemoteRepository
 import br.com.rrodovalho.data.repository.remote.api.ApiContract
+import br.com.rrodovalho.domain.repository.MarvelRepository
 import com.google.gson.Gson
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -21,7 +22,7 @@ val KOIN_NAMED_REMOTE_REPOSITORY = named("remote")
 val dataModule = module {
     single(KOIN_NAMED_LOCAL_REPOSITORY) { LocalRepository() }
     single(KOIN_NAMED_REMOTE_REPOSITORY) { RemoteRepository(get()) }
-    single { MarvelRepositoryImpl(get(KOIN_NAMED_LOCAL_REPOSITORY), get(KOIN_NAMED_REMOTE_REPOSITORY)) }
+    single { MarvelRepositoryImpl(get(KOIN_NAMED_LOCAL_REPOSITORY), get(KOIN_NAMED_REMOTE_REPOSITORY)) as MarvelRepository }
     single { Gson() }
     single {
         val logging = HttpLoggingInterceptor()

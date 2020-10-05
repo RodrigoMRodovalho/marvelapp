@@ -19,8 +19,7 @@ interface ApiContract {
     suspend fun fetchCharacterList(@QueryMap params: Map<String, String>): ApiResponse
 
     @GET("characters/{characterId}")
-    suspend fun fetchCharacterDetail(@Path("characterId") characterId: String,
-                                     @QueryMap params: Map<String, String>): ApiResponse
+    suspend fun fetchCharacterDetail(@Path("characterId") characterId: String): ApiResponse
 
 
 }

@@ -12,7 +12,7 @@ class GetCharacterListUseCase (private val repository: MarvelRepository)
 
     override suspend fun executeUC(requestValues: RequestValues?): List<Character> {
         return withContext(Dispatchers.IO){
-            return@withContext repository.fetchMarvelCharacterList(0,0)
+            return@withContext repository.fetchMarvelCharacterList(10,0)
         }
     }
 }
