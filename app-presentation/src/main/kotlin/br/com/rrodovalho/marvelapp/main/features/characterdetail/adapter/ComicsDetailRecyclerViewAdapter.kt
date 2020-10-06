@@ -39,14 +39,13 @@ class ComicsDetailRecyclerViewAdapter(private val context: Context,
 
             comicsDetail?.let {
                 itemView.comicsTitleTextView.text = comicsDetail.comics.name
-                if (comicsDetail.description.isNullOrBlank()){
-                    itemView.comicsDescriptionTextView.visibility = View.GONE
-                } else {
+                if (comicsDetail.description.isNullOrBlank().not()){
                     itemView.comicsDescriptionTextView.visibility = View.VISIBLE
                     itemView.comicsDescriptionTextView.text = comicsDetail.description
                 }
 
                 if (comicsDetail.imageUrl.isNotBlank()){
+                    itemView.comicsImageView.setImageResource(android.R.color.transparent)
                     itemView.comicsImageView.loadImage(comicsDetail.imageUrl, R.drawable.marvel_logo)
                 } else {
                     itemView.comicsImageView.background = context.getDrawable(R.drawable.marvel_logo)
