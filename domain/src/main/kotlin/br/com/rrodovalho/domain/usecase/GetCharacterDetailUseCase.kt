@@ -25,7 +25,7 @@ class GetCharacterDetailUseCase (private val repository: MarvelRepository)
                     comicsDetail[index] = try {
                         call.await()
                     } catch (ex: Exception) {
-                        null
+                        ComicsDetail(comics, "", "")
                     }
                 }
                 return@supervisorScope CharacterDetail(requestValues.character, comicsDetail.toList())

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.base.loadImage
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
-import kotlinx.android.synthetic.main.characterinfo_item.view.*
+import kotlinx.android.synthetic.main.character_info_item.view.*
 
 class CharacterInfoRecyclerViewAdapter(private val context: Context,
                                        var characterInfoList: MutableList<ViewCharacter>,
@@ -16,7 +16,7 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
     RecyclerView.Adapter<CharacterInfoRecyclerViewAdapter.CharacterInfoRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterInfoRecyclerViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.characterinfo_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.character_info_item, parent, false)
         return CharacterInfoRecyclerViewHolder(view)
     }
 

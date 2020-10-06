@@ -3,16 +3,24 @@ package br.com.rrodovalho.marvelapp.main.features.characterdetail
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.rrodovalho.data.repository.mapper.transform
+import br.com.rrodovalho.domain.model.ComicsDetail
 import br.com.rrodovalho.domain.model.Status
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.base.loadImage
+import br.com.rrodovalho.marvelapp.main.features.characterdetail.adapter.ComicsDetailRecyclerViewAdapter
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
+import br.com.rrodovalho.marvelapp.main.model.ViewComics
+import br.com.rrodovalho.marvelapp.main.model.mapper.transformTo
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.koin.android.ext.android.inject
+
 
 class CharacterDetailActivity : AppCompatActivity() {
 
     private val vm : CharacterDetailViewModel by inject()
+    lateinit var comicsDetailRecyclerViewAdapter: ComicsDetailRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +30,8 @@ class CharacterDetailActivity : AppCompatActivity() {
 
         character?.let {
 
+            initComicsList(character.comics)
+
             characterDetailNameTextView.text = it.name
             characterDetailDescriptiontextView.text = it.description
             characterDetailImageView.loadImage(it.imageUrl)
@@ -29,9 +39,11 @@ class CharacterDetailActivity : AppCompatActivity() {
             vm.observeData.observe(this, { resource ->
                     if (resource.status == Status.SUCCESS) {
                         val characterDetail = resource.data!!
+                        comicsDetailRecyclerViewAdapter.updateList(characterDetail.comicsDetail.toMutableList())
                         //Toast.makeText(this, "${resource.data?.character?.id}", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             )
@@ -40,5 +52,22 @@ class CharacterDetailActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun initComicsList(comics: List<ViewComics>) {
+        comicsRecyclerView.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        val comicsDetailList = mutableListOf<ComicsDetail?>()
+
+        comics.forEach {
+            comicsDetailList.add(ComicsDetail(transformTo(it), "", ""))
+        }
+
+        comicsDetailRecyclerViewAdapter = ComicsDetailRecyclerViewAdapter(this, comicsDetailList)
+        comicsRecyclerView.adapter = comicsDetailRecyclerViewAdapter
     }
 }
