@@ -9,7 +9,7 @@ class ComicsDetailEntity(
     @PrimaryKey var id: String,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "resource_uri") var resourceUri: String,
-    @ColumnInfo(name = "description") var description: String,
+    @ColumnInfo(name = "description") var description: String? = null,
     @ColumnInfo(name = "image_url") var imageUrl: String
 )
 

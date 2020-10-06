@@ -39,9 +39,10 @@ class ComicsDetailRecyclerViewAdapter(private val context: Context,
 
             comicsDetail?.let {
                 itemView.comicsTitleTextView.text = comicsDetail.comics.name
-                if (comicsDetail.description.isBlank()){
+                if (comicsDetail.description.isNullOrBlank()){
                     itemView.comicsDescriptionTextView.visibility = View.GONE
                 } else {
+                    itemView.comicsDescriptionTextView.visibility = View.VISIBLE
                     itemView.comicsDescriptionTextView.text = comicsDetail.description
                 }
 
