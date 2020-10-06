@@ -57,5 +57,9 @@ dependencies {
     androidTestImplementation(TestLibraries.testRunner)
     testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.room)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.mockitoKotlin)
+    testImplementation(TestLibraries.hamcrest)
+    testImplementation(TestLibraries.kotlinCoroutines)
     androidTestImplementation(TestLibraries.room)
 }
