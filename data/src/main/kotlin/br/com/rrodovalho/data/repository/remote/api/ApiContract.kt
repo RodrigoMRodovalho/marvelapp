@@ -1,9 +1,11 @@
 package br.com.rrodovalho.data.repository.remote.api
 
-import br.com.rrodovalho.data.repository.remote.model.ApiResponse
+import br.com.rrodovalho.data.repository.remote.model.CharacterApiResponse
+import br.com.rrodovalho.data.repository.remote.model.ComicsApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.QueryMap
+import retrofit2.http.Url
 
 interface ApiContract {
 
@@ -16,10 +18,12 @@ interface ApiContract {
     }
 
     @GET("characters")
-    suspend fun fetchCharacterList(@QueryMap params: Map<String, String>): ApiResponse
+    suspend fun fetchCharacterList(@QueryMap params: Map<String, String>): CharacterApiResponse
 
     @GET("characters/{characterId}")
-    suspend fun fetchCharacterDetail(@Path("characterId") characterId: String): ApiResponse
+    suspend fun fetchCharacterDetail(@Path("characterId") characterId: String): CharacterApiResponse
 
+    @GET
+    suspend fun fetchComicsFromCharacter(@Url comicsUrl: String): ComicsApiResponse
 
 }

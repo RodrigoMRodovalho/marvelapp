@@ -22,12 +22,13 @@ class CharacterDetailActivity : AppCompatActivity() {
 
         character?.let {
 
+            characterDetailNameTextView.text = it.name
+            characterDetailDescriptiontextView.text = it.description
+            characterDetailImageView.loadImage(it.imageUrl)
+
             vm.observeData.observe(this, { resource ->
                     if (resource.status == Status.SUCCESS) {
                         val characterDetail = resource.data!!
-                        characterDetailNameTextView.text = characterDetail.character.name
-                        characterDetailDescriptiontextView.text = characterDetail.character.description
-                        characterDetailImageView.loadImage(characterDetail.character.imageUrl)
                         //Toast.makeText(this, "${resource.data?.character?.id}", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT).show()

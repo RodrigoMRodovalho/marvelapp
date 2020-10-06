@@ -32,7 +32,6 @@ class CharacterListActivity : AppCompatActivity() {
         vm.observeData.observe(this, { resource ->
                 isLoading = false
                 if (resource.status == Status.SUCCESS) {
-                    //Toast.makeText(this, "${resource.data?.size}", Toast.LENGTH_SHORT).show()
                     populateList(resource.data!!)
                 } else {
                     Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT).show()

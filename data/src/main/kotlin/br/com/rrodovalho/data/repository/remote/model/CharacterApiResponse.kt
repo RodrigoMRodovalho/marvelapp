@@ -2,7 +2,7 @@ package br.com.rrodovalho.data.repository.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiResponse(
+data class CharacterApiResponse(
     @SerializedName("attributionHTML")
     val attributionHTML: String,
     @SerializedName("attributionText")

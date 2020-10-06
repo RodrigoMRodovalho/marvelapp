@@ -5,6 +5,7 @@ import br.com.rrodovalho.data.repository.mapper.transformTo
 import br.com.rrodovalho.data.repository.remote.api.ApiContract
 import br.com.rrodovalho.domain.model.Character
 import br.com.rrodovalho.domain.model.CharacterDetail
+import br.com.rrodovalho.domain.model.ComicsDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 
 class RemoteRepository(private val apiContract: ApiContract): MarvelRepository {
@@ -15,5 +16,9 @@ class RemoteRepository(private val apiContract: ApiContract): MarvelRepository {
 
     override suspend fun fetchMarvelCharacterDetail(characterId: String): CharacterDetail {
         return transform(apiContract.fetchCharacterDetail(characterId))
+    }
+
+    override suspend fun fetchComicsDetailFromCharacter(comicsResource: String): ComicsDetail {
+        return transform(apiContract.fetchComicsFromCharacter(comicsResource))
     }
 }
