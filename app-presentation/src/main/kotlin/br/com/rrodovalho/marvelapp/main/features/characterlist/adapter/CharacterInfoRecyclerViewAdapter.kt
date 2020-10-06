@@ -4,26 +4,28 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-
 import br.com.rrodovalho.marvelapp.R
+import br.com.rrodovalho.marvelapp.main.base.loadImage
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.characterinfo_item.view.*
 
 class CharacterInfoRecyclerViewAdapter(private val context: Context,
-                                         private val characterInfoList: MutableList<ViewCharacter>,
-                                         private val listener: (Int, ViewCharacter) -> Unit):
+                                       var characterInfoList: MutableList<ViewCharacter>,
+                                       private val listener: (Int, ViewCharacter) -> Unit):
     RecyclerView.Adapter<CharacterInfoRecyclerViewAdapter.CharacterInfoRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterInfoRecyclerViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.characterinfo_item, parent, false)
-        return CharacterInfoRecyclerViewHolder(context, view)
+        return CharacterInfoRecyclerViewHolder(view)
     }
 
-    //fun getList(): MutableList<Character> = characterInfoList
+    fun updateList(list: MutableList<ViewCharacter>) {
+        val lastListSize = characterInfoList.size
+        val newItemCount = list.size
+        characterInfoList.addAll(list)
+        notifyItemRangeInserted(lastListSize, newItemCount)
+    }
 
     override fun getItemCount(): Int = characterInfoList.size
 
@@ -31,7 +33,7 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
         holder.bindView(characterInfoList[position], position, listener)
     }
 
-    class CharacterInfoRecyclerViewHolder(val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CharacterInfoRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindView(character: ViewCharacter, position: Int, listener: (Int, ViewCharacter) -> Unit){
             itemView.characterNametextView.text = character.name
@@ -48,12 +50,4 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
         }
 
     }
-}
-
-fun ImageView.loadImage(imageUrl: String) {
-    Glide.with(context)
-        .load(imageUrl)
-        .error(R.drawable.ic_launcher_background)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .into(this)
 }

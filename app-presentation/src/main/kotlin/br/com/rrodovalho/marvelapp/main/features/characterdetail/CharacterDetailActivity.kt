@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.rrodovalho.domain.model.Status
 import br.com.rrodovalho.marvelapp.R
-import br.com.rrodovalho.marvelapp.main.features.characterlist.adapter.loadImage
+import br.com.rrodovalho.marvelapp.main.base.loadImage
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.koin.android.ext.android.inject

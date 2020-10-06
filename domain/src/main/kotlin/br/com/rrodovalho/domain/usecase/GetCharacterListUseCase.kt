@@ -10,9 +10,14 @@ import kotlinx.coroutines.withContext
 class GetCharacterListUseCase (private val repository: MarvelRepository)
     : UseCase<RequestValues, List<Character>>(){
 
+    private var offset = 0
+    private val limit = 10
+
     override suspend fun executeUC(requestValues: RequestValues?): List<Character> {
         return withContext(Dispatchers.IO){
-            return@withContext repository.fetchMarvelCharacterList(10,0)
+            return@withContext repository.fetchMarvelCharacterList(limit, offset)
+        }.also {
+            offset+=limit
         }
     }
 }

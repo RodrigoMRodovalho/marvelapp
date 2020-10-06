@@ -5,6 +5,6 @@ import br.com.rrodovalho.domain.usecase.GetCharacterListUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    single {GetCharacterListUseCase(get()) }
-    single { GetCharacterDetailUseCase(get()) }
+    factory {GetCharacterListUseCase(get()) }
+    factory { GetCharacterDetailUseCase(get()) }
 }
