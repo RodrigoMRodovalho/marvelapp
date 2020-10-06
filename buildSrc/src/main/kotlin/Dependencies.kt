@@ -49,6 +49,8 @@ object Libraries {
         const val retrofit = "2.6.0"
         const val okHttpInterceptor = "3.8.0"
         const val glideVersion = "4.11.0"
+        const val room = "2.2.5"
+        const val debugDatabase     = "1.0.6"
     }
 
     const val kotlinStdLib             = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -57,8 +59,6 @@ object Libraries {
     const val constraintLayout         = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore                  = "androidx.core:core-ktx:${Versions.ktx}"
     const val googleMaterial           = "com.google.android.material:material:${Versions.googleMaterial}"
-    const val navigationFragment       = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-    const val navigationUi             = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val lifeCycleViewModel       = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val lifeCycleExtensions      = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val lifeCycleCompiler        = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
@@ -75,6 +75,10 @@ object Libraries {
     const val retrofitGson             = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val glide                    = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
     const val glideCompiler             = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
+    const val roomRuntime              = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx                  = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler             = "androidx.room:room-compiler:${Versions.room}"
+    const val debugDatabase            = "com.amitshekhar.android:debug-db:${Versions.debugDatabase}"
 }
 
 object TestLibraries {

@@ -45,6 +45,12 @@ dependencies {
     implementation(Libraries.retrofit)
     implementation(Libraries.retrofitGson)
     implementation(Libraries.okHttpInteceptor)
+    implementation(Libraries.roomKtx)
+    implementation(Libraries.roomRuntime)
+
+    kapt (Libraries.roomCompiler)
+
+    debugImplementation (Libraries.debugDatabase)
 
     androidTestImplementation(TestLibraries.testCore)
     androidTestImplementation(TestLibraries.extJunit)

@@ -1,10 +1,10 @@
 package br.com.rrodovalho.data.repository.mapper
 
+import br.com.rrodovalho.data.repository.local.db.entities.ComicsDetailEntity
 import br.com.rrodovalho.data.repository.remote.model.CharacterApiResponse
 import br.com.rrodovalho.data.repository.remote.model.ComicsApiResponse
 import br.com.rrodovalho.data.repository.remote.model.Thumbnail
 import br.com.rrodovalho.domain.model.Character
-import br.com.rrodovalho.domain.model.CharacterDetail
 import br.com.rrodovalho.domain.model.Comics
 import br.com.rrodovalho.domain.model.ComicsDetail
 
@@ -19,8 +19,12 @@ fun transformTo(characterApiResponse: CharacterApiResponse): List<Character> {
         val comicsList = mutableListOf<Comics>()
 
         it.comics.items.forEach { comics ->
-            comicsList.add(Comics(comics.name,
-                handleMissingHttpSecurityUrl(comics.resourceURI)))
+            comicsList.add(
+                Comics(comics.resourceURI.substringAfterLast("/"),
+                    comics.name,
+                    handleMissingHttpSecurityUrl(comics.resourceURI)
+                )
+            )
         }
 
         val character = Character("${it.id}", it.name,
@@ -34,23 +38,36 @@ fun transformTo(characterApiResponse: CharacterApiResponse): List<Character> {
     return characterList
 }
 
-fun transform(characterApiResponse: CharacterApiResponse): CharacterDetail {
-
-    val characterList = transformTo(characterApiResponse)
-
-    return CharacterDetail(characterList[0], emptyList())
-}
-
 fun transform(comicsApiResponse: ComicsApiResponse): ComicsDetail {
 
     val comicsResult = comicsApiResponse.data.results[0]
 
     return ComicsDetail(
-        Comics(comicsResult.title,
+        Comics(comicsResult.id.toString(), comicsResult.title,
         comicsResult.resourceURI),
         comicsResult.description,
         composeImageUrl(comicsResult.thumbnail)
     )
+}
+
+fun transformTo(comicsDetailEntity: ComicsDetailEntity): ComicsDetail {
+    with (comicsDetailEntity) {
+        return ComicsDetail(
+            Comics(this.id, this.name, this.resourceUri)
+            , this.description, this.imageUrl
+        )
+    }
+}
+
+fun transformTo(comicsDetail: ComicsDetail): ComicsDetailEntity {
+    with(comicsDetail){
+        return ComicsDetailEntity(
+            this.comics.id,
+            this.comics.name,
+            this.comics.resourceUrl,
+            this.description,
+            this.imageUrl)
+    }
 }
 
 private fun composeImageUrl(thumbnail: Thumbnail): String {

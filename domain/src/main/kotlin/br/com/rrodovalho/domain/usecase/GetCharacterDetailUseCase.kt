@@ -21,7 +21,7 @@ class GetCharacterDetailUseCase (private val repository: MarvelRepository)
             supervisorScope {
                 val comicsDetail = Array<ComicsDetail?>(requestValues?.character!!.comics.size) { null }
                 requestValues.character.comics.forEachIndexed { index, comics ->
-                    val call = async { repository.fetchComicsDetailFromCharacter(comics.resourceUrl) }
+                    val call = async { repository.fetchComicsDetail(comics) }
                     comicsDetail[index] = try {
                         call.await()
                     } catch (ex: Exception) {
@@ -30,7 +30,6 @@ class GetCharacterDetailUseCase (private val repository: MarvelRepository)
                 }
                 return@supervisorScope CharacterDetail(requestValues.character, comicsDetail.toList())
             }
-            //return@withContext repository.fetchMarvelCharacterDetail(requestValues?.character!!.id)
         }
     }
 

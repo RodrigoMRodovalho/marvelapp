@@ -21,13 +21,13 @@ fun transformToViewCharacterList(characterList: List<Character>): List<ViewChara
 
 fun transformTo(comics: Comics): ViewComics {
     with (comics) {
-        return ViewComics(this.name, this.resourceUrl)
+        return ViewComics(this.id, this.name, this.resourceUrl)
     }
 }
 
 fun transformTo(viewComics: ViewComics): Comics {
     with (viewComics) {
-        return Comics(this.name, this.resourceUrl)
+        return Comics(this.id, this.name, this.resourceUrl)
     }
 }
 
