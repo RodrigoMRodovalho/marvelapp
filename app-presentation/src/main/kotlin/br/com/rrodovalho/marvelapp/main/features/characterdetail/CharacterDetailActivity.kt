@@ -34,7 +34,7 @@ class CharacterDetailActivity : AppCompatActivity() {
 
             characterDetailNameTextView.text = it.name
             characterDetailDescriptiontextView.text = it.description
-            characterDetailImageView.loadImage(it.imageUrl)
+            characterDetailImageView.loadImage(it.imageUrl, R.drawable.marvel_logo)
 
             vm.observeData.observe(this, { resource ->
                     if (resource.status == Status.SUCCESS) {
@@ -48,6 +48,7 @@ class CharacterDetailActivity : AppCompatActivity() {
                 }
             )
 
+            Toast.makeText(this, getString(R.string.fetch_comics_message), Toast.LENGTH_SHORT).show()
             vm.getCharacterDetail(it)
         }
 

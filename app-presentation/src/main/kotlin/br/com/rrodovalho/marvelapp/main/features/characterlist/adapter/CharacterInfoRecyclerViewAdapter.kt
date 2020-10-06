@@ -42,7 +42,7 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
             } else {
                 itemView.characterDescriptiontextView.text = character.description
             }
-            itemView.characterImageView.loadImage(character.imageUrl)
+            itemView.characterImageView.loadImage(character.imageUrl, R.drawable.marvel_logo)
 
             itemView.setOnClickListener {
                 listener(position, character)

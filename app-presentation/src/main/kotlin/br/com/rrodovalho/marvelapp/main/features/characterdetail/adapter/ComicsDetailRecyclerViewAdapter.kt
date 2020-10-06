@@ -46,7 +46,7 @@ class ComicsDetailRecyclerViewAdapter(private val context: Context,
                 }
 
                 if (comicsDetail.imageUrl.isNotBlank()){
-                    itemView.comicsImageView.loadImage(comicsDetail.imageUrl)
+                    itemView.comicsImageView.loadImage(comicsDetail.imageUrl, R.drawable.marvel_logo)
                 } else {
                     itemView.comicsImageView.background = context.getDrawable(R.drawable.marvel_logo)
                 }
