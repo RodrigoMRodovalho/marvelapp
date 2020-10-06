@@ -2,6 +2,6 @@
     <string name="app_name">MarvelApp</string>
     <string name="fetch_more_characters_message">Loading more characters…</string>
     <string name="fetch_characters_message">Loading characters…</string>
-    <string name="comics_reference">Comics</string>
+    <string name="comics_reference">Character Appearance Comics List</string>
     <string name="fetch_comics_message">Loading Comics</string>
 </resources>
