@@ -24,7 +24,6 @@ object BuildPlugins {
     const val kotlinAndroid             = "kotlin-android"
     const val kotlinAndroidExtensions   = "kotlin-android-extensions"
     const val kotlinKapt                = "kotlin-kapt"
-    const val googleServices            = "com.google.gms.google-services"
     const val navigationSafeArgs        = "androidx.navigation.safeargs.kotlin"
 }
 

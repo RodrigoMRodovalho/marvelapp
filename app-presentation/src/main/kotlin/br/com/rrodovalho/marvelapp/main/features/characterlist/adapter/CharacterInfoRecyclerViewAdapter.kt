@@ -6,15 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rrodovalho.domain.model.Character
+
 import br.com.rrodovalho.marvelapp.R
+import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.characterinfo_item.view.*
 
 class CharacterInfoRecyclerViewAdapter(private val context: Context,
-                                         private val characterInfoList: MutableList<Character>,
-                                         private val listener: (Int, Character) -> Unit):
+                                         private val characterInfoList: MutableList<ViewCharacter>,
+                                         private val listener: (Int, ViewCharacter) -> Unit):
     RecyclerView.Adapter<CharacterInfoRecyclerViewAdapter.CharacterInfoRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterInfoRecyclerViewHolder {
@@ -32,9 +33,13 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
 
     class CharacterInfoRecyclerViewHolder(val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(character: Character, position: Int, listener: (Int, Character) -> Unit){
+        fun bindView(character: ViewCharacter, position: Int, listener: (Int, ViewCharacter) -> Unit){
             itemView.characterNametextView.text = character.name
-            itemView.characterDescriptiontextView.text = character.description
+            if (character.description.isBlank()){
+                itemView.characterDescriptiontextView.visibility = View.GONE
+            } else {
+                itemView.characterDescriptiontextView.text = character.description
+            }
             itemView.characterImageView.loadImage(character.imageUrl)
 
             itemView.setOnClickListener {
@@ -48,7 +53,6 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
 fun ImageView.loadImage(imageUrl: String) {
     Glide.with(context)
         .load(imageUrl)
-        //.asBitmap()
         .error(R.drawable.ic_launcher_background)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(this)

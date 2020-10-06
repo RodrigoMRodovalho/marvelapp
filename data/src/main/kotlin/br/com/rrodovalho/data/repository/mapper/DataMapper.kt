@@ -20,6 +20,8 @@ fun transformTo(apiResponse: ApiResponse): List<Character> {
 }
 
 fun transform(apiResponse: ApiResponse): CharacterDetail {
-    //TODO map
-    return CharacterDetail()
+
+    val characterList = transformTo(apiResponse)
+
+    return CharacterDetail(characterList[0], "comics")
 }
