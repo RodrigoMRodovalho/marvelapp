@@ -2,8 +2,8 @@ package br.com.rrodovalho.data.repository
 
 import br.com.rrodovalho.data.repository.local.CacheRepository
 import br.com.rrodovalho.domain.model.Character
-import br.com.rrodovalho.domain.model.Comics
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.Comic
+import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 
 class MarvelRepositoryImpl(private val localRepository: CacheRepository,
@@ -13,11 +13,11 @@ class MarvelRepositoryImpl(private val localRepository: CacheRepository,
         return remoteRepository.fetchMarvelCharacterList(limit, offset)
     }
 
-    override suspend fun fetchComicsDetail(comics: Comics): ComicsDetail {
+    override suspend fun fetchComicsDetail(comic: Comic): ComicDetail {
         return try {
-            localRepository.fetchComicsDetail(comics)
+            localRepository.fetchComicsDetail(comic)
         } catch (e: Exception) {
-            val comicsDetail = remoteRepository.fetchComicsDetail(comics)
+            val comicsDetail = remoteRepository.fetchComicsDetail(comic)
             localRepository.saveComicsDetail(comicsDetail)
             comicsDetail
         }

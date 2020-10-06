@@ -1,9 +1,9 @@
 package br.com.rrodovalho.marvelapp.main.model.mapper
 
 import br.com.rrodovalho.domain.model.Character
-import br.com.rrodovalho.domain.model.Comics
+import br.com.rrodovalho.domain.model.Comic
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
-import br.com.rrodovalho.marvelapp.main.model.ViewComics
+import br.com.rrodovalho.marvelapp.main.model.ViewComic
 
 fun transformTo(character: Character): ViewCharacter {
     with (character) {
@@ -19,29 +19,29 @@ fun transformToViewCharacterList(characterList: List<Character>): List<ViewChara
     return viewCharacterList
 }
 
-fun transformTo(comics: Comics): ViewComics {
-    with (comics) {
-        return ViewComics(this.id, this.name, this.resourceUrl)
+fun transformTo(comic: Comic): ViewComic {
+    with (comic) {
+        return ViewComic(this.id, this.name, this.resourceUrl)
     }
 }
 
-fun transformTo(viewComics: ViewComics): Comics {
-    with (viewComics) {
-        return Comics(this.id, this.name, this.resourceUrl)
+fun transformTo(viewComic: ViewComic): Comic {
+    with (viewComic) {
+        return Comic(this.id, this.name, this.resourceUrl)
     }
 }
 
-fun transformToViewComicsList(comicsList: List<Comics>): List<ViewComics> {
-    val viewComicsList = mutableListOf<ViewComics>()
-    comicsList.forEach {
+fun transformToViewComicsList(comicList: List<Comic>): List<ViewComic> {
+    val viewComicsList = mutableListOf<ViewComic>()
+    comicList.forEach {
         viewComicsList.add(transformTo(it))
     }
     return viewComicsList
 }
 
-fun transformToComicsList(viewComicsList: List<ViewComics>): List<Comics> {
-    val comicsList = mutableListOf<Comics>()
-    viewComicsList.forEach {
+fun transformToComicsList(viewComicList: List<ViewComic>): List<Comic> {
+    val comicsList = mutableListOf<Comic>()
+    viewComicList.forEach {
         comicsList.add(transformTo(it))
     }
     return comicsList

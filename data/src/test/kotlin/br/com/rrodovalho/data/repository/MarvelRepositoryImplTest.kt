@@ -2,8 +2,8 @@ package br.com.rrodovalho.data.repository
 
 import br.com.rrodovalho.data.repository.local.CacheRepository
 import br.com.rrodovalho.domain.model.Character
-import br.com.rrodovalho.domain.model.Comics
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.Comic
+import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.never
@@ -61,8 +61,8 @@ class MarvelRepositoryImplTest {
 
         runBlockingTest {
 
-            val comics = Comics("1", "name", "resourceUrl")
-            val expectedComicsDetail = ComicsDetail(comics, "description", "imageUrl")
+            val comics = Comic("1", "name", "resourceUrl")
+            val expectedComicsDetail = ComicDetail(comics, "description", "imageUrl")
 
             whenever(localRepository.fetchComicsDetail(comics))
                 .thenReturn(expectedComicsDetail)
@@ -82,8 +82,8 @@ class MarvelRepositoryImplTest {
 
         runBlockingTest {
 
-            val comics = Comics("1", "name", "resourceUrl")
-            val expectedComicsDetail = ComicsDetail(comics, "description", "imageUrl")
+            val comics = Comic("1", "name", "resourceUrl")
+            val expectedComicsDetail = ComicDetail(comics, "description", "imageUrl")
 
             whenever(localRepository.fetchComicsDetail(comics))
                 .thenThrow(NoSuchElementException())

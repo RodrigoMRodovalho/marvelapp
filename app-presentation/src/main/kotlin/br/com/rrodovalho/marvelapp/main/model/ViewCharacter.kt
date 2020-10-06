@@ -8,4 +8,4 @@ data class ViewCharacter (val id: String,
                           val name: String,
                           val description: String,
                           val imageUrl: String,
-                          val comics: List<ViewComics>): Parcelable
+                          val comics: List<ViewComic>): Parcelable

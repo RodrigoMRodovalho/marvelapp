@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.rrodovalho.data.repository.mapper.transform
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.domain.model.Status
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.base.loadImage
 import br.com.rrodovalho.marvelapp.main.features.characterdetail.adapter.ComicsDetailRecyclerViewAdapter
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
-import br.com.rrodovalho.marvelapp.main.model.ViewComics
+import br.com.rrodovalho.marvelapp.main.model.ViewComic
 import br.com.rrodovalho.marvelapp.main.model.mapper.transformTo
 import kotlinx.android.synthetic.main.activity_character_detail.*
 import org.koin.android.ext.android.inject
@@ -39,7 +38,7 @@ class CharacterDetailActivity : AppCompatActivity() {
             vm.observeData.observe(this, { resource ->
                     if (resource.status == Status.SUCCESS) {
                         val characterDetail = resource.data!!
-                        comicsDetailRecyclerViewAdapter.updateList(characterDetail.comicsDetail.toMutableList())
+                        comicsDetailRecyclerViewAdapter.updateList(characterDetail.comicDetail.toMutableList())
                         //Toast.makeText(this, "${resource.data?.character?.id}", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT)
@@ -55,17 +54,17 @@ class CharacterDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun initComicsList(comics: List<ViewComics>) {
+    private fun initComicsList(comics: List<ViewComic>) {
         comicsRecyclerView.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL,
             false
         )
 
-        val comicsDetailList = mutableListOf<ComicsDetail?>()
+        val comicsDetailList = mutableListOf<ComicDetail?>()
 
         comics.forEach {
-            comicsDetailList.add(ComicsDetail(transformTo(it), "", ""))
+            comicsDetailList.add(ComicDetail(transformTo(it), "", ""))
         }
 
         comicsDetailRecyclerViewAdapter = ComicsDetailRecyclerViewAdapter(this, comicsDetailList)

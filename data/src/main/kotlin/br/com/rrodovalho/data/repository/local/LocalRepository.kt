@@ -2,12 +2,12 @@ package br.com.rrodovalho.data.repository.local
 
 import br.com.rrodovalho.data.repository.local.db.dao.ComicsDetailDao
 import br.com.rrodovalho.data.repository.mapper.transformTo
-import br.com.rrodovalho.domain.model.Comics
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.Comic
+import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 
 interface CacheRepository: MarvelRepository {
-    fun saveComicsDetail(comicsDetail: ComicsDetail)
+    fun saveComicsDetail(comicDetail: ComicDetail)
 }
 
 class LocalRepository(private val comicsDetailDao: ComicsDetailDao): CacheRepository {
@@ -15,11 +15,11 @@ class LocalRepository(private val comicsDetailDao: ComicsDetailDao): CacheReposi
     override suspend fun fetchMarvelCharacterList(limit: Int, offset: Int)
             = throw IllegalStateException("character list must be fetched on internet")
 
-    override suspend fun fetchComicsDetail(comics: Comics): ComicsDetail {
-        return transformTo(comicsDetailDao.getComicsDetailById(comics.id))
+    override suspend fun fetchComicsDetail(comic: Comic): ComicDetail {
+        return transformTo(comicsDetailDao.getComicsDetailById(comic.id))
     }
 
-    override fun saveComicsDetail(comicsDetail: ComicsDetail) {
-        comicsDetailDao.saveComicsDetail(transformTo(comicsDetail))
+    override fun saveComicsDetail(comicDetail: ComicDetail) {
+        comicsDetailDao.saveComicsDetail(transformTo(comicDetail))
     }
 }

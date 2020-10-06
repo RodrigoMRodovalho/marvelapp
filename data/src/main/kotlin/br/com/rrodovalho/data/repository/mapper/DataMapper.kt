@@ -5,8 +5,8 @@ import br.com.rrodovalho.data.repository.remote.model.CharacterApiResponse
 import br.com.rrodovalho.data.repository.remote.model.ComicsApiResponse
 import br.com.rrodovalho.data.repository.remote.model.Thumbnail
 import br.com.rrodovalho.domain.model.Character
-import br.com.rrodovalho.domain.model.Comics
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.Comic
+import br.com.rrodovalho.domain.model.ComicDetail
 
 const val HTTPS_REF = "https"
 const val HTTP_REF = "http"
@@ -16,11 +16,11 @@ fun transformTo(characterApiResponse: CharacterApiResponse): List<Character> {
     val characterList = mutableListOf<Character>()
     characterApiResponse.data.results.forEach {
 
-        val comicsList = mutableListOf<Comics>()
+        val comicsList = mutableListOf<Comic>()
 
         it.comics.items.forEach { comics ->
             comicsList.add(
-                Comics(comics.resourceURI.substringAfterLast("/"),
+                Comic(comics.resourceURI.substringAfterLast("/"),
                     comics.name,
                     handleMissingHttpSecurityUrl(comics.resourceURI)
                 )
@@ -38,33 +38,33 @@ fun transformTo(characterApiResponse: CharacterApiResponse): List<Character> {
     return characterList
 }
 
-fun transform(comicsApiResponse: ComicsApiResponse): ComicsDetail {
+fun transformTo(comicsApiResponse: ComicsApiResponse): ComicDetail {
 
     val comicsResult = comicsApiResponse.data.results[0]
 
-    return ComicsDetail(
-        Comics(comicsResult.id.toString(), comicsResult.title,
+    return ComicDetail(
+        Comic(comicsResult.id.toString(), comicsResult.title,
         comicsResult.resourceURI),
         comicsResult.description,
         composeImageUrl(comicsResult.thumbnail)
     )
 }
 
-fun transformTo(comicsDetailEntity: ComicsDetailEntity): ComicsDetail {
+fun transformTo(comicsDetailEntity: ComicsDetailEntity): ComicDetail {
     with (comicsDetailEntity) {
-        return ComicsDetail(
-            Comics(this.id, this.name, this.resourceUri)
+        return ComicDetail(
+            Comic(this.id, this.name, this.resourceUri)
             , this.description, this.imageUrl
         )
     }
 }
 
-fun transformTo(comicsDetail: ComicsDetail): ComicsDetailEntity {
-    with(comicsDetail){
+fun transformTo(comicDetail: ComicDetail): ComicsDetailEntity {
+    with(comicDetail){
         return ComicsDetailEntity(
-            this.comics.id,
-            this.comics.name,
-            this.comics.resourceUrl,
+            this.comic.id,
+            this.comic.name,
+            this.comic.resourceUrl,
             this.description,
             this.imageUrl)
     }

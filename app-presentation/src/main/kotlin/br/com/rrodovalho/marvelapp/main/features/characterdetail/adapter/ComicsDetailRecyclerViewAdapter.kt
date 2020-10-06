@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rrodovalho.domain.model.ComicsDetail
+import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.base.loadImage
 import kotlinx.android.synthetic.main.comics_info_item.view.*
 
 
 class ComicsDetailRecyclerViewAdapter(private val context: Context,
-                                      var comicsDetailList: MutableList<ComicsDetail?>):
+                                      var comicDetailList: MutableList<ComicDetail?>):
     RecyclerView.Adapter<ComicsDetailRecyclerViewAdapter.ComicsDetailRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicsDetailRecyclerViewHolder {
@@ -21,32 +21,32 @@ class ComicsDetailRecyclerViewAdapter(private val context: Context,
         return ComicsDetailRecyclerViewHolder(context, view)
     }
 
-    fun updateList(list: MutableList<ComicsDetail?>) {
-        comicsDetailList = list
+    fun updateList(list: MutableList<ComicDetail?>) {
+        comicDetailList = list
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = comicsDetailList.size
+    override fun getItemCount(): Int = comicDetailList.size
 
     override fun onBindViewHolder(holder: ComicsDetailRecyclerViewHolder, position: Int) {
-        holder.bindView(comicsDetailList[position])
+        holder.bindView(comicDetailList[position])
     }
 
     class ComicsDetailRecyclerViewHolder(val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun bindView(comicsDetail: ComicsDetail?){
+        fun bindView(comicDetail: ComicDetail?){
 
-            comicsDetail?.let {
-                itemView.comicsTitleTextView.text = comicsDetail.comics.name
-                if (comicsDetail.description.isNullOrBlank().not()){
+            comicDetail?.let {
+                itemView.comicsTitleTextView.text = comicDetail.comic.name
+                if (comicDetail.description.isNullOrBlank().not()){
                     itemView.comicsDescriptionTextView.visibility = View.VISIBLE
-                    itemView.comicsDescriptionTextView.text = comicsDetail.description
+                    itemView.comicsDescriptionTextView.text = comicDetail.description
                 }
 
-                if (comicsDetail.imageUrl.isNotBlank()){
+                if (comicDetail.imageUrl.isNotBlank()){
                     itemView.comicsImageView.setImageResource(android.R.color.transparent)
-                    itemView.comicsImageView.loadImage(comicsDetail.imageUrl, R.drawable.marvel_logo)
+                    itemView.comicsImageView.loadImage(comicDetail.imageUrl, R.drawable.marvel_logo)
                 } else {
                     itemView.comicsImageView.background = context.getDrawable(R.drawable.marvel_logo)
                 }
