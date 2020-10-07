@@ -5,7 +5,7 @@ import br.com.rrodovalho.domain.repository.MarvelRepository
 import br.com.rrodovalho.domain.usecase.base.RequestValues
 import br.com.rrodovalho.domain.usecase.base.UseCase
 
-class GetCharacterListUseCase (private val repository: MarvelRepository)
+open class GetCharacterListUseCase (private val repository: MarvelRepository)
     : UseCase<RequestValues, List<Character>>(){
 
     var offset = 0

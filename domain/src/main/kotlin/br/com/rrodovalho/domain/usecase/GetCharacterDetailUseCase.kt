@@ -9,7 +9,7 @@ import br.com.rrodovalho.domain.usecase.base.UseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.supervisorScope
 
-class GetCharacterDetailUseCase (private val repository: MarvelRepository)
+open class GetCharacterDetailUseCase (private val repository: MarvelRepository)
     : UseCase<GetCharacterDetailUseCase.Values, CharacterDetail>() {
 
     data class Values(val character: Character): RequestValues

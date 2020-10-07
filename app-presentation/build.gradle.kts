@@ -67,7 +67,12 @@ dependencies {
     kapt(Libraries.glideCompiler)
 
     testImplementation(TestLibraries.junit4)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.mockitoKotlin)
+    testImplementation(TestLibraries.hamcrest)
+    testImplementation(TestLibraries.kotlinCoroutines)
+    testImplementation(TestLibraries.archCoreTesting)
+
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)
-    androidTestImplementation(TestLibraries.archCoreTesting)
 }
