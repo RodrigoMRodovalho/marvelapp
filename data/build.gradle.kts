@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    buildToolsVersion("30.0.1")
+    buildToolsVersion(AndroidSdk.buildTools)
     compileSdkVersion(AndroidSdk.compile)
     defaultConfig {
         minSdkVersion(AndroidSdk.min)
