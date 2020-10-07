@@ -2,6 +2,7 @@ package br.com.rrodovalho.marvelapp.main.features.characterlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
@@ -29,12 +30,22 @@ class CharacterListActivity : AppCompatActivity() {
         initScrollListener()
         initAdapter()
 
+        tryAgainButton.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
+            fetchData()
+        }
+
         vm.observeData.observe(this, { resource ->
+                progressBar.visibility = View.GONE
                 isLoading = false
                 if (resource.status == Status.SUCCESS) {
                     populateList(resource.data!!)
                 } else {
-                    Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT).show()
+                    if (characterInfoRecyclerViewAdapter.characterInfoList.isEmpty()){
+                        tryAgainButton.visibility = View.VISIBLE
+                    }
+                    Toast.makeText(this, getString(R.string.failed_fetch_character_list),
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         )
@@ -49,6 +60,7 @@ class CharacterListActivity : AppCompatActivity() {
             getString(R.string.fetch_characters_message)
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        tryAgainButton.visibility = View.GONE
         vm.getCharacterList()
     }
 

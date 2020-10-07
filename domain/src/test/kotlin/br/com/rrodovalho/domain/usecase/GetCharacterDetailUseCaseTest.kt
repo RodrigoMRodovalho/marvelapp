@@ -1,5 +1,6 @@
 package br.com.rrodovalho.domain.usecase
 
+import br.com.rrodovalho.domain.exception.EmptyCharacterDetailException
 import br.com.rrodovalho.domain.model.Character
 import br.com.rrodovalho.domain.model.Comic
 import br.com.rrodovalho.domain.model.ComicDetail
@@ -87,6 +88,42 @@ class GetCharacterDetailUseCaseTest {
 
             assertEquals(character, characterDetail.character)
             assertEquals(comicsDetailList, characterDetail.comicDetail)
+        }
+    }
+
+    @Test(expected = EmptyCharacterDetailException::class)
+    fun getCharacterDetailUseCase_WhenFetchMarvelCharacterDetail_ShouldReturnEmptyCharacterListException() {
+
+        runBlockingTest {
+
+            val comicsList = listOf(
+                Comic("id1", "name1", "resourceUrl1"),
+                Comic("id2", "name2", "resourceUrl2"),
+                Comic("id3", "name3", "resourceUrl3"),
+                Comic("id4", "name4", "resourceUrl4")
+            )
+
+            val character = Character("id",
+                "name",
+                "description",
+                "imageUrl",
+                comicsList
+            )
+            sut.addRequestValues(GetCharacterDetailUseCase.Values(character))
+
+            whenever(repository.fetchComicsDetail(comicsList[0]))
+                .thenThrow(IllegalArgumentException())
+
+            whenever(repository.fetchComicsDetail(comicsList[1]))
+                .thenThrow(IllegalArgumentException())
+
+            whenever(repository.fetchComicsDetail(comicsList[2]))
+                .thenThrow(IllegalArgumentException())
+
+            whenever(repository.fetchComicsDetail(comicsList[3]))
+                .thenThrow(IllegalArgumentException())
+
+            sut.run(testDispatcher)
         }
     }
 }

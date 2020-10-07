@@ -23,7 +23,7 @@ class CharacterListViewModel (private val getCharacterListUseCase: GetCharacterL
                     .run()
                 _observeData.value = Resource.success(transformToViewCharacterList(result))
             } catch (e: Exception) {
-                _observeData.value = Resource.Companion.error(e)
+                _observeData.value = Resource.error(e)
             }
         }
     }

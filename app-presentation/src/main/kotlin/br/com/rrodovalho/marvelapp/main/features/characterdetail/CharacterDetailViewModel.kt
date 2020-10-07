@@ -24,7 +24,7 @@ class CharacterDetailViewModel(private val getCharacterDetailUseCase: GetCharact
                     .run()
                 _observeData.value = Resource.success(result)
             } catch (e: Exception) {
-                _observeData.value = Resource.Companion.error(e)
+                _observeData.value = Resource.error(e)
             }
         }
     }

@@ -11,7 +11,7 @@ fun ImageView.loadImage(imageUrl: String, @DrawableRes placeholder: Int) {
     Glide.with(context)
         .load(imageUrl)
         .placeholder(placeholder)
-        .error(R.drawable.ic_launcher_background)
+        .error(R.drawable.marvel_logo)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(this)
 }

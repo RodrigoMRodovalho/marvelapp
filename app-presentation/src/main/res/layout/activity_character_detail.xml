@@ -59,16 +59,16 @@
             android:scrollbarSize="4dp"
             android:scrollbars="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/comicsListReferenceTextView"
             tools:layout_editor_absoluteX="16dp"
             tools:listitem="@layout/character_info_item" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/comicsListReferenceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/comics_reference"
+            tools:text="@string/comics_reference"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

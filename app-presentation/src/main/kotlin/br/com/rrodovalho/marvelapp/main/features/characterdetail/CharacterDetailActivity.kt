@@ -34,15 +34,16 @@ class CharacterDetailActivity : AppCompatActivity() {
             characterDetailNameTextView.text = it.name
             characterDetailDescriptionTextView.text = it.description
             characterDetailImageView.loadImage(it.imageUrl, R.drawable.marvel_logo)
+            comicsListReferenceTextView.text = getString(R.string.comics_reference, it.comics.size)
 
             vm.observeData.observe(this, { resource ->
                     if (resource.status == Status.SUCCESS) {
                         val characterDetail = resource.data!!
                         comicsDetailRecyclerViewAdapter.updateList(characterDetail.comicDetail.toMutableList())
-                        //Toast.makeText(this, "${resource.data?.character?.id}", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this, "${resource.throwable?.message}", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this, getString(R.string.failed_fetch_character_detail),
+                            Toast.LENGTH_SHORT).show()
+
                     }
                 }
             )
