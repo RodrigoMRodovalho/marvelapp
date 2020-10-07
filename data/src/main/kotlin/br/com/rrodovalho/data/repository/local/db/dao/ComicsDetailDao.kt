@@ -13,5 +13,5 @@ interface ComicsDetailDao {
     fun saveComicsDetail(comicsDetailEntity: ComicsDetailEntity)
 
     @Query("SELECT * FROM ComicsDetail WHERE id = :id")
-    fun getComicsDetailById(id: String): ComicsDetailEntity
+    fun getComicsDetailById(id: String): ComicsDetailEntity?
 }

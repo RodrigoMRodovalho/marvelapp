@@ -99,6 +99,5 @@ class MarvelRepositoryImplTest {
             verify(remoteRepository).fetchComicsDetail(comics)
             verify(localRepository).saveComicsDetail(expectedComicsDetail)
         }
-        
     }
 }

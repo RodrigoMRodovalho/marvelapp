@@ -16,7 +16,9 @@ class LocalRepository(private val comicsDetailDao: ComicsDetailDao): CacheReposi
             = throw IllegalStateException("character list must be fetched on internet")
 
     override suspend fun fetchComicsDetail(comic: Comic): ComicDetail {
-        return transformTo(comicsDetailDao.getComicsDetailById(comic.id))
+        val comicsDetail = comicsDetailDao.getComicsDetailById(comic.id)
+            ?: throw NoSuchElementException()
+        return transformTo(comicsDetail)
     }
 
     override fun saveComicsDetail(comicDetail: ComicDetail) {

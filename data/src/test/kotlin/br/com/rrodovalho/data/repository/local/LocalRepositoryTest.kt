@@ -61,6 +61,20 @@ class LocalRepositoryTest {
         }
     }
 
+    @Test(expected = NoSuchElementException::class)
+    fun localRepository_WhenGetNoSavedComicsDetail_ShouldThrowNoSuchElementException() {
+
+        runBlockingTest {
+
+            val comic = Comic("300", "name", "https://i.com.br/300")
+
+            whenever(comicsDetailDao.getComicsDetailById(comic.id))
+                .thenReturn(null)
+
+            sut.fetchComicsDetail(comic)
+        }
+    }
+
     @Test
     fun localRepository_WhenSaveComicsDetail_ShouldSaveWithSuccess() {
 
@@ -83,6 +97,5 @@ class LocalRepositoryTest {
             assertEquals(captor.lastValue.imageUrl, comicDetail.imageUrl)
             assertEquals(captor.lastValue.resourceUri, comicDetail.comic.resourceUrl)
         }
-
     }
 }

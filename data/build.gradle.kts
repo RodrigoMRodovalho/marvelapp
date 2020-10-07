@@ -14,6 +14,11 @@ android {
         versionCode = Application.applicationVersionCode
         versionName = Application.applicationVersionName
         testInstrumentationRunner = TestLibraries.testInstrumentationRunner
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
     }
     buildTypes {
         getByName("release") {
@@ -25,6 +30,7 @@ android {
         getByName("main").java.srcDirs("src/main/kotlin")
         getByName("test").java.srcDirs("src/test/kotlin")
         getByName("androidTest").java.srcDirs("src/androidTest/kotlin")
+        getByName("androidTest").assets.srcDirs("schemas")
     }
 
     compileOptions {
@@ -52,14 +58,16 @@ dependencies {
 
     debugImplementation (Libraries.debugDatabase)
 
-    androidTestImplementation(TestLibraries.testCore)
-    androidTestImplementation(TestLibraries.extJunit)
-    androidTestImplementation(TestLibraries.testRunner)
     testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.room)
     testImplementation(TestLibraries.mockito)
     testImplementation(TestLibraries.mockitoKotlin)
     testImplementation(TestLibraries.hamcrest)
     testImplementation(TestLibraries.kotlinCoroutines)
+
+
+    androidTestImplementation(TestLibraries.testCore)
+    androidTestImplementation(TestLibraries.extJunit)
+    androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.room)
 }
