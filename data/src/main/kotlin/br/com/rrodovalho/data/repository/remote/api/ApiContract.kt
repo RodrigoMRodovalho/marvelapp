@@ -20,9 +20,6 @@ interface ApiContract {
     @GET("characters")
     suspend fun fetchCharacterList(@QueryMap params: Map<String, String>): CharacterApiResponse
 
-    @GET("characters/{characterId}")
-    suspend fun fetchCharacterDetail(@Path("characterId") characterId: String): CharacterApiResponse
-
     @GET
     suspend fun fetchComicsFromCharacter(@Url comicsUrl: String): ComicsApiResponse
 

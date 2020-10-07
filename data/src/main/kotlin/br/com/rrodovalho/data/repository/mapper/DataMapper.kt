@@ -44,7 +44,7 @@ fun transformTo(comicsApiResponse: ComicsApiResponse): ComicDetail {
 
     return ComicDetail(
         Comic(comicsResult.id.toString(), comicsResult.title,
-        comicsResult.resourceURI),
+            handleMissingHttpSecurityUrl(comicsResult.resourceURI)),
         comicsResult.description,
         composeImageUrl(comicsResult.thumbnail)
     )

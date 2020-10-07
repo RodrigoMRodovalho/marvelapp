@@ -10,7 +10,11 @@ import br.com.rrodovalho.domain.repository.MarvelRepository
 class RemoteRepository(private val apiContract: ApiContract): MarvelRepository {
 
     override suspend fun fetchMarvelCharacterList(limit: Int, offset: Int): List<Character> {
-        return transformTo(apiContract.fetchCharacterList(mapOf("limit" to "$limit", "offset" to "$offset")))
+        return transformTo(
+            apiContract.fetchCharacterList(
+                mapOf("limit" to "$limit", "offset" to "$offset")
+            )
+        )
     }
 
     override suspend fun fetchComicsDetail(comic: Comic): ComicDetail {
