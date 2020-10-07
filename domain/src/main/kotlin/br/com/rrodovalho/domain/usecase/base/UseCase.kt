@@ -1,5 +1,8 @@
 package br.com.rrodovalho.domain.usecase.base
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.concurrent.CancellationException
 
 abstract class UseCase<in RV : RequestValues, T> {
@@ -11,9 +14,11 @@ abstract class UseCase<in RV : RequestValues, T> {
         return this
     }
 
-    open suspend fun run(): T {
+    open suspend fun run(coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO): T {
         try{
-            return executeUC(requestValues)
+            return withContext(coroutineDispatcher) {
+                executeUC(requestValues)
+            }
         }
         catch (e: CancellationException){
             throw e

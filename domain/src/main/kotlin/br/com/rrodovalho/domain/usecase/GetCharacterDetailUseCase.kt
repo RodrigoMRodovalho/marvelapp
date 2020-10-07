@@ -6,10 +6,8 @@ import br.com.rrodovalho.domain.model.ComicDetail
 import br.com.rrodovalho.domain.repository.MarvelRepository
 import br.com.rrodovalho.domain.usecase.base.RequestValues
 import br.com.rrodovalho.domain.usecase.base.UseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.supervisorScope
-import kotlinx.coroutines.withContext
 
 class GetCharacterDetailUseCase (private val repository: MarvelRepository)
     : UseCase<GetCharacterDetailUseCase.Values, CharacterDetail>() {
@@ -17,8 +15,7 @@ class GetCharacterDetailUseCase (private val repository: MarvelRepository)
     data class Values(val character: Character): RequestValues
 
     override suspend fun executeUC(requestValues: Values?): CharacterDetail {
-        return withContext(Dispatchers.IO){
-            supervisorScope {
+        return supervisorScope {
                 val comicsDetail = Array<ComicDetail?>(requestValues?.character!!.comics.size) { null }
                 requestValues.character.comics.forEachIndexed { index, comics ->
                     val call = async { repository.fetchComicsDetail(comics) }
@@ -29,7 +26,6 @@ class GetCharacterDetailUseCase (private val repository: MarvelRepository)
                     }
                 }
                 return@supervisorScope CharacterDetail(requestValues.character, comicsDetail.toList())
-            }
         }
     }
 
