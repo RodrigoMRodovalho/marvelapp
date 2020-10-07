@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:contentDescription="" />
+            android:contentDescription="@string/character_image_content_description" />
 
         <TextView
             android:id="@+id/characterNametextView"
@@ -42,7 +42,7 @@
             tools:text="Hero Name" />
 
         <TextView
-            android:id="@+id/characterDescriptiontextView"
+            android:id="@+id/characterDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

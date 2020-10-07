@@ -32,7 +32,7 @@ class CharacterDetailActivity : AppCompatActivity() {
             initComicsList(character.comics)
 
             characterDetailNameTextView.text = it.name
-            characterDetailDescriptiontextView.text = it.description
+            characterDetailDescriptionTextView.text = it.description
             characterDetailImageView.loadImage(it.imageUrl, R.drawable.marvel_logo)
 
             vm.observeData.observe(this, { resource ->

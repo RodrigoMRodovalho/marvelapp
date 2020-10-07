@@ -4,4 +4,7 @@
     <string name="fetch_characters_message">Loading characters…</string>
     <string name="comics_reference">Character Appearance Comics List</string>
     <string name="fetch_comics_message">Loading Comics</string>
+    <string name="character_image_content_description">character_image</string>
+    <string name="comic_image_content_description">comic image</string>
+    <string name="no_character_description_available">No description available</string>
 </resources>

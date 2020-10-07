@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
@@ -21,7 +23,13 @@ android {
         }
     }
     buildTypes {
+
+        getByName("debug"){
+            addBuildConfigParameters(this)
+        }
+
         getByName("release") {
+            addBuildConfigParameters(this)
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -39,6 +47,20 @@ android {
     }
 }
 
+fun addBuildConfigParameters(buildType: com.android.build.gradle.internal.dsl.BuildType) {
+    val apiKey: String = gradleLocalProperties(rootDir).getProperty("apiKey")
+    val ts: String = gradleLocalProperties(rootDir).getProperty("ts")
+    val hash: String = gradleLocalProperties(rootDir).getProperty("hash")
+
+    with (buildType) {
+        buildConfigField("String", "apiKeyParam", "\"apikey\"")
+        buildConfigField("String", "apiKeyValue", "\"$apiKey\"")
+        buildConfigField("String", "tsParam", "\"ts\"")
+        buildConfigField("String", "tsValue", "\"$ts\"")
+        buildConfigField("String", "hashParam", "\"hash\"")
+        buildConfigField("String", "hashValue", "\"$hash\"")
+    }
+}
 
 dependencies {
     implementation(project(":domain"))

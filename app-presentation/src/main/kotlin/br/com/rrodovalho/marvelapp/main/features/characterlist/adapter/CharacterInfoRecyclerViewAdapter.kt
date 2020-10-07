@@ -17,7 +17,7 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterInfoRecyclerViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.character_info_item, parent, false)
-        return CharacterInfoRecyclerViewHolder(view)
+        return CharacterInfoRecyclerViewHolder(context, view)
     }
 
     fun updateList(list: MutableList<ViewCharacter>) {
@@ -33,14 +33,15 @@ class CharacterInfoRecyclerViewAdapter(private val context: Context,
         holder.bindView(characterInfoList[position], position, listener)
     }
 
-    class CharacterInfoRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CharacterInfoRecyclerViewHolder(private val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindView(character: ViewCharacter, position: Int, listener: (Int, ViewCharacter) -> Unit){
             itemView.characterNametextView.text = character.name
             if (character.description.isBlank()){
-                itemView.characterDescriptiontextView.visibility = View.GONE
+                itemView.characterDescriptionTextView.text =
+                    context.getString(R.string.no_character_description_available)
             } else {
-                itemView.characterDescriptiontextView.text = character.description
+                itemView.characterDescriptionTextView.text = character.description
             }
             itemView.characterImageView.loadImage(character.imageUrl, R.drawable.marvel_logo)
 

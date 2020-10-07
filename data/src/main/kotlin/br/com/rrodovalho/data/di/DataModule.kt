@@ -44,9 +44,9 @@ val dataModule = module {
                 val originalHttpUrl: HttpUrl = original.url()
 
                 val url: HttpUrl = originalHttpUrl.newBuilder()
-                    .addQueryParameter("apikey", ApiContract.API_KEY)
-                    .addQueryParameter("ts", ApiContract.TS)
-                    .addQueryParameter("hash", ApiContract.HASH)
+                    .addQueryParameter(BuildConfig.apiKeyParam, BuildConfig.apiKeyValue)
+                    .addQueryParameter(BuildConfig.tsParam, BuildConfig.tsValue)
+                    .addQueryParameter(BuildConfig.hashParam, BuildConfig.hashValue)
                     .build()
 
                 // Request customization: add request headers
