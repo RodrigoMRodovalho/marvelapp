@@ -60,11 +60,6 @@ ts=YOUR_API_TS
 hash=YOUR_API_HASH
 ```
 
-> sdk.dir=/your/sdk/path
-> apiKey=YOUR_API_KEY
-> ts=YOUR_API_TS
-> hash=YOUR_API_HASH
-
 ### Screenshots
 
 ![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/androidCharacterList_1.png)
