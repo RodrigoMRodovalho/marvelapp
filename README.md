@@ -38,12 +38,20 @@ MarvelApp is built using Kotlin and Android SDK.
 
 MarvelApp project contains Unit Tests and UI Tests
 
-| Unit Tests | UI Tests
-:-:|:-:
-![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UnitTests.png) | building
+Unit Tests
+
+![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UnitTests.png)
+
+![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UiTest_2.png) 
 
 ### Installation
 
+You have to add the API settings in **local.properties** file
+
+> sdk.dir=/your/sdk/path
+> apiKey=YOUR_API_KEY
+> ts=YOUR_API_TS
+> hash=YOUR_API_HASH
 
 ### Screenshots
 

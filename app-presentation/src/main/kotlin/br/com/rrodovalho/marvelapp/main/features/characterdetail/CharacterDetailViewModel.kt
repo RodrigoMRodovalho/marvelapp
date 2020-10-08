@@ -10,13 +10,13 @@ import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
 import br.com.rrodovalho.marvelapp.main.model.mapper.transformTo
 import kotlinx.coroutines.launch
 
-class CharacterDetailViewModel(private val getCharacterDetailUseCase: GetCharacterDetailUseCase)
+open class CharacterDetailViewModel(private val getCharacterDetailUseCase: GetCharacterDetailUseCase)
     : BaseViewModel() {
 
-    private val _observeData = MutableLiveData<Resource<CharacterDetail>>()
+    internal val _observeData = MutableLiveData<Resource<CharacterDetail>>()
     val observeData : LiveData<Resource<CharacterDetail>> = _observeData
 
-    fun getCharacterDetail (character: ViewCharacter) {
+    open fun getCharacterDetail (character: ViewCharacter) {
         coroutineScope.launch {
             try {
                 val result = getCharacterDetailUseCase

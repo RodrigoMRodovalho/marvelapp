@@ -12,6 +12,7 @@ import br.com.rrodovalho.domain.model.Status
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.features.characterdetail.CharacterDetailActivity
 import br.com.rrodovalho.marvelapp.main.features.characterlist.adapter.CharacterInfoRecyclerViewAdapter
+import br.com.rrodovalho.marvelapp.main.features.di.CHARACTER_BUNDLE_NAVIGATION_KEY
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
 import kotlinx.android.synthetic.main.activity_character_list.*
 import org.koin.android.ext.android.inject
@@ -79,7 +80,7 @@ class CharacterListActivity : AppCompatActivity() {
 
     private fun showCharacterDetailScreen(character: ViewCharacter) {
         val intent = Intent(this, CharacterDetailActivity::class.java).apply {
-            putExtras(Bundle().also { it.putParcelable("character", character) })
+            putExtras(Bundle().also { it.putParcelable(CHARACTER_BUNDLE_NAVIGATION_KEY, character) })
         }
         startActivity(intent)
     }

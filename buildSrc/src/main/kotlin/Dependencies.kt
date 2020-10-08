@@ -84,8 +84,8 @@ object Libraries {
 object TestLibraries {
     private object Versions {
         const val junit4 = "4.12"
-        const val androidXTest = "1.2.0"
-        const val espresso = "3.2.0"
+        const val androidXTest = "1.3.0"
+        const val espresso = "3.3.0"
         const val androidArchTesting = "2.0.0"
         const val koin = "2.0.1"
         const val kotlinCorotines = "1.3.2"
@@ -101,7 +101,7 @@ object TestLibraries {
     const val testCore                  = "androidx.test:core:${Versions.androidXTest}"
     const val extJunit                  = "androidx.test.ext:junit:1.0.0"
     const val testRunner                = "androidx.test:runner:${Versions.androidXTest}"
-    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val testInstrumentationRunner = "br.com.rrodovalho.marvelapp.util.runner.KoinTestRunner"
     const val espresso                  = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val archCoreTesting           = "androidx.arch.core:core-testing:${Versions.androidArchTesting}"
     const val koin                      = "org.koin:koin:${Versions.koin}"

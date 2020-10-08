@@ -6,17 +6,16 @@ import br.com.rrodovalho.domain.model.Resource
 import br.com.rrodovalho.domain.usecase.GetCharacterListUseCase
 import br.com.rrodovalho.marvelapp.main.base.BaseViewModel
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
-import br.com.rrodovalho.marvelapp.main.model.mapper.transformTo
 import br.com.rrodovalho.marvelapp.main.model.mapper.transformToViewCharacterList
 import kotlinx.coroutines.launch
 
-class CharacterListViewModel (private val getCharacterListUseCase: GetCharacterListUseCase)
+open class CharacterListViewModel (private val getCharacterListUseCase: GetCharacterListUseCase)
     : BaseViewModel() {
 
-    private val _observeData = MutableLiveData<Resource<List<ViewCharacter>>>()
+    internal val _observeData = MutableLiveData<Resource<List<ViewCharacter>>>()
     val observeData : LiveData<Resource<List<ViewCharacter>>> = _observeData
 
-    fun getCharacterList () {
+    open fun getCharacterList () {
         coroutineScope.launch {
             try {
                 val result = getCharacterListUseCase

@@ -5,6 +5,8 @@ import br.com.rrodovalho.marvelapp.main.features.characterlist.CharacterListView
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+const val CHARACTER_BUNDLE_NAVIGATION_KEY = "character"
+
 val featuresModule = module {
     viewModel { CharacterListViewModel(get()) }
     viewModel { CharacterDetailViewModel(get()) }

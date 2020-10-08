@@ -9,6 +9,7 @@ import br.com.rrodovalho.domain.model.Status
 import br.com.rrodovalho.marvelapp.R
 import br.com.rrodovalho.marvelapp.main.base.loadImage
 import br.com.rrodovalho.marvelapp.main.features.characterdetail.adapter.ComicsDetailRecyclerViewAdapter
+import br.com.rrodovalho.marvelapp.main.features.di.CHARACTER_BUNDLE_NAVIGATION_KEY
 import br.com.rrodovalho.marvelapp.main.model.ViewCharacter
 import br.com.rrodovalho.marvelapp.main.model.ViewComic
 import br.com.rrodovalho.marvelapp.main.model.mapper.transformTo
@@ -19,13 +20,13 @@ import org.koin.android.ext.android.inject
 class CharacterDetailActivity : AppCompatActivity() {
 
     private val vm : CharacterDetailViewModel by inject()
-    lateinit var comicsDetailRecyclerViewAdapter: ComicsDetailRecyclerViewAdapter
+    private lateinit var comicsDetailRecyclerViewAdapter: ComicsDetailRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character_detail)
 
-        val character = intent.getParcelableExtra<ViewCharacter>("character")
+        val character = intent.getParcelableExtra<ViewCharacter>(CHARACTER_BUNDLE_NAVIGATION_KEY)
 
         character?.let {
 

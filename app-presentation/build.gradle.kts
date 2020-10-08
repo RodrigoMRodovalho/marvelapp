@@ -39,6 +39,10 @@ android {
         this as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 
@@ -73,6 +77,16 @@ dependencies {
     testImplementation(TestLibraries.kotlinCoroutines)
     testImplementation(TestLibraries.archCoreTesting)
 
+    androidTestImplementation(TestLibraries.mockito)
+    androidTestImplementation(TestLibraries.mockitoKotlin)
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.testCore)
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.2")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-contrib:3.3.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-intents:3.3.0")
+    androidTestImplementation ("org.koin:koin-test:2.0.1") {
+        exclude("org.mockito")
+    }
 }
