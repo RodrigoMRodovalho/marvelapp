@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">MarvelApp</string>
+    <string name="app_name" translatable="false">MarvelApp</string>
     <string name="fetch_more_characters_message">Loading more characters…</string>
     <string name="fetch_characters_message">Loading characters…</string>
     <string name="comics_reference">Character Appearance Comics List (%d)</string>
-    <string name="fetch_comics_message">Loading Comics</string>
-    <string name="character_image_content_description">character_image</string>
-    <string name="comic_image_content_description">comic image</string>
+    <string name="fetch_comics_message">Loading Comics…</string>
+    <string name="character_image_content_description" translatable="false">character_image</string>
+    <string name="comic_image_content_description" translatable="false">comic image</string>
     <string name="no_character_description_available">No description available</string>
     <string name="try_again">Try Again</string>
-    <string name="failed_fetch_character_list">Failed to character list</string>
+    <string name="failed_fetch_character_list">Failed to get character list</string>
     <string name="failed_fetch_character_detail">Failed to get character detail</string>
 </resources>

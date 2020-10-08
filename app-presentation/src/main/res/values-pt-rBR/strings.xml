@@ -1,0 +1,10 @@
+<resources>
+    <string name="fetch_more_characters_message">Carregando mais personagens…</string>
+    <string name="fetch_characters_message">Carregando personagens…</string>
+    <string name="comics_reference">Quadrinhos onde o personagem aparece (%d)</string>
+    <string name="fetch_comics_message">Carregando quadrinhos…</string>
+    <string name="no_character_description_available">Nenhuma descrição disponível</string>
+    <string name="try_again">Tente novamente</string>
+    <string name="failed_fetch_character_list">Falha ao carregar lista de personagens</string>
+    <string name="failed_fetch_character_detail">Falha ao carregar dados do personagem</string>
+</resources>

@@ -42,7 +42,11 @@ Unit Tests
 
 ![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UnitTests.png)
 
-![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UiTest_2.png) 
+Ui Tests
+
+![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UITest_1.png)
+
+![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/UITest_2.png) 
 
 ### Installation
 
