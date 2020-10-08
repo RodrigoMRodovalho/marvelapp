@@ -78,6 +78,7 @@ hash=YOUR_API_HASH
 - Specific error handling
 - Adding more ui tests
 - Fix intermittent Koin issue in Ui Tests 
+- API Pagination Logic
  
 License
 ----
