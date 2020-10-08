@@ -26,6 +26,7 @@ MarvelApp is built using Kotlin and Android SDK.
   - For REST Api connections Retrofit was used (https://github.com/square/retrofit)
   - In MVVM pattern the communication between View and ViewModel was made using LiveData from Architecture Components
   - For unit tests, Mockito Kotlin to mock objects was used. (https://github.com/nhaarman/mockito-kotlin)
+  - For ui tests, Espresso library.
 
  
 > Third-Party Dependencies are obtained via gradle.
