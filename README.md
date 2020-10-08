@@ -53,6 +53,13 @@ Ui Tests
 
 You have to add the API settings in **local.properties** file
 
+```sh
+sdk.dir=/your/sdk/path
+apiKey=YOUR_API_KEY
+ts=YOUR_API_TS
+hash=YOUR_API_HASH
+```
+
 > sdk.dir=/your/sdk/path
 > apiKey=YOUR_API_KEY
 > ts=YOUR_API_TS
