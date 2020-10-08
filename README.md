@@ -69,6 +69,13 @@ You have to add the API settings in **local.properties** file
 
 ![alt text](https://github.com/RodrigoMRodovalho/marvelapp/blob/main/Screenshots/androidCharacterDetail_3.png)
 
+# Future Improvements
+
+- Layout design
+- Specific error handling
+- Adding more ui tests
+- Fix intermittent Koin issue in Ui Tests 
+ 
 License
 ----
 MIT
